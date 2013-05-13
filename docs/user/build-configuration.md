@@ -69,13 +69,17 @@ after another) or affect tools like `rake` or `mvn` that may be looking for file
 
 You can specify the main build command to run instead of the default
 
-    script: "make it-rain"
+``` YAML
+script: "make it-rain"
+```
 
 The script can be any executable; it doesn't have to be `make`. As a matter of fact the only requirement for the script is that it **should use an exit code 0 on success, any thing else is considered a build failure**. Also practically it should output any important information to the console so that the results can be reviewed (in real time!) on the website.
 
 If you want to run a script local to your repository, do it like this:
 
-    script: ./script/ci/run_build.sh
+``` YAML
+script: ./script/ci/run_build.sh
+```
 
 In this case, the script should be made executable (for example, using `chmod +x`) and contain a valid shebang line
 (`/usr/bin/env sh`, `/usr/bin/env ruby`, `/usr/bin/env python` and so on).
@@ -84,17 +88,21 @@ In this case, the script should be made executable (for example, using `chmod +x
 
 You can also define scripts to be run before and after the main script:
 
-    before_script: some_command
-    after_script:  another_command
+``` YAML
+before_script: some_command
+after_script:  another_command
+```
 
 Both settings support multiple scripts, too:
 
-    before_script:
-      - before_command_1
-      - before_command_2
-    after_script:
-      - after_command_1
-      - after_command_2
+``` YAML
+before_script:
+  - before_command_1
+  - before_command_2
+after_script:
+  - after_command_1
+  - after_command_2
+```
 
 These scripts can, for example, be used to setup databases or other build setup tasks. 
 For more information about database setup see [Database setup](/docs/user/database-setup/).
@@ -192,9 +200,11 @@ Learn more in our [Java guide](/docs/user/languages/java/).
 
 Node.js projects specify releases they need to be tested against using `node_js` key:
 
-     node_js:
-       - "0.4"
-       - "0.6"
+``` YAML
+node_js:
+ - "0.4"
+ - "0.6"
+```
 
 Learn more about [.travis.yml options for Node.js projects](/docs/user/languages/javascript-with-nodejs/).
 
